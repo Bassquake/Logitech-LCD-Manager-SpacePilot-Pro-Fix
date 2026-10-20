@@ -1,6 +1,6 @@
 # LcdLabelHelper
 
-Brings back the button labels on the **3Dconnexion SpacePilot Pro** LCD ("Function Keys" screen) under 3DxWare 10.8 and later.
+Brings back the button labels on the **3Dconnexion SpacePilot Pro** LCD ("Function Keys" screen) under 3DxWare 10.8 and later. May work for other 3DConnexion devices.
 
 ## The problem
 
