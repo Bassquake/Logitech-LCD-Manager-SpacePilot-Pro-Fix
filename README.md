@@ -1,10 +1,14 @@
 # LcdLabelHelper
 
-Brings back the button labels on the **3Dconnexion SpacePilot Pro** LCD ("Function Keys" screen) under 3DxWare 10.8 and later. May work for other 3DConnexion devices.
+Brings back the button labels on the **3Dconnexion SpacePilot Pro** LCD ("Function Keys" screen) under 3DxWare 10.8 and later using a very tiny exe! May work for other 3DConnexion devices.
+
+![Yay!](https://github.com/Bassquake/Logitech-LCD-Manager-SpacePilot-Pro-Fix/blob/master/assets/spacepilot-pro-text-yes.jpg)
 
 ## The problem
 
 From 3DxWare **10.8.5** onwards (tested up to **10.9.14**), the SpacePilot Pro's Function Keys screen shows no button labels. 3DxWare **10.7.4** and earlier work fine.
+
+![No text on screen](https://github.com/Bassquake/Logitech-LCD-Manager-SpacePilot-Pro-Fix/blob/master/assets/spacepilot-pro-text-none.jpg)
 
 This isn't Windows blocking anything, and it isn't caused by the LCD applets (`3DxLcdApplets64.msi` is byte-for-byte identical across these versions). The cause is in the driver service:
 
