@@ -33,35 +33,35 @@ The helper only adds labels to the SpacePilot Pro section of the file. Other dev
 
 ## Usage
 
-Download `LcdLabelHelper-<version>.exe` (e.g. `LcdLabelHelper-1.0.exe`) from the Releases page and put it anywhere, for example `%LOCALAPPDATA%\Programs\LcdLabelHelper\`. The version is also shown in the exe's Properties → Details.
+Download `LcdLabelHelper.exe` from the Releases page and put it anywhere, for example `%LOCALAPPDATA%\Programs\LcdLabelHelper\`. Its version is shown in the exe's Properties → Details.
 
 | Command | What it does |
 |---|---|
-| `LcdLabelHelper-1.0.exe` | Starts the background watcher. Only one copy runs at a time; starting it again while it's running does nothing. |
-| `LcdLabelHelper-1.0.exe --once` | Patches `LCDCfg.xml` once and prints the version and each button's resolved label. |
-| `LcdLabelHelper-1.0.exe --exit` | Stops the running background copy. |
+| `LcdLabelHelper.exe` | Starts the background watcher. Only one copy runs at a time; starting it again while it's running does nothing. |
+| `LcdLabelHelper.exe --once` | Patches `LCDCfg.xml` once and prints the version and each button's resolved label. |
+| `LcdLabelHelper.exe --exit` | Stops the running background copy. |
 
 Any other argument is ignored, and the background watcher starts.
 
 The exe has no window, so a console doesn't flash at startup. A side effect is that PowerShell doesn't wait for it, and the `--once` output can overlap your prompt. Pipe it to get clean output:
 
 ```powershell
-.\LcdLabelHelper-1.0.exe --once | Out-String
+.\LcdLabelHelper.exe --once | Out-String
 ```
 
 The log is at `%LOCALAPPDATA%\3Dconnexion\3DxWare\LcdLabelHelper.log`, and records which version started.
 
 ### Start automatically at sign-in
 
-Press <kbd>Win</kbd>+<kbd>R</kbd>, enter `shell:startup`, and create a shortcut to the exe there with no arguments. Don't run it as administrator: it works on your own user profile's files.
+Press <kbd>Win</kbd>+<kbd>R</kbd>, enter `shell:startup`, and create a shortcut to `LcdLabelHelper.exe` there with no arguments. Don't run it as administrator: it works on your own user profile's files.
 
 ### Updating LcdLabelHelper
 
-Each release has its own filename, and only one copy can run at a time, whatever its version. To update, run the old exe with `--exit`, start the new one, and point your startup shortcut at the new file.
+Run `LcdLabelHelper.exe --exit` first, because Windows won't let you replace an exe that's running. Then overwrite it with the new `LcdLabelHelper.exe` and start it again. Your startup shortcut keeps working, since the filename doesn't change.
 
 ### Uninstall
 
-Run the exe with `--exit`, remove the startup shortcut if you made one, and delete the exe. Optionally delete the log file. The helper changes nothing else; the driver rewrites `LCDCfg.xml` on its own the next time the active app changes.
+Run `LcdLabelHelper.exe --exit`, remove the startup shortcut if you made one, and delete the exe. Optionally delete the log file. The helper changes nothing else; the driver rewrites `LCDCfg.xml` on its own the next time the active app changes.
 
 ## Upgrading 3DxWare
 
@@ -77,11 +77,13 @@ The source is a single file and builds with the C# compiler included in Windows;
 build.cmd
 ```
 
-This produces `LcdLabelHelper-<version>.exe`. It reads the version from the `public const string Version` line in `LcdLabelHelper.cs`, which is also what appears in the exe's Properties. To release a new version, change that one line and rebuild. The underlying command is:
+which runs:
 
 ```bat
-%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe -nologo -target:winexe -optimize -out:LcdLabelHelper-1.0.exe LcdLabelHelper.cs
+%WINDIR%\Microsoft.NET\Framework64\v4.0.30319\csc.exe -nologo -target:winexe -optimize -out:LcdLabelHelper.exe LcdLabelHelper.cs
 ```
+
+The version in the exe's Properties comes from the `public const string Version` line in `LcdLabelHelper.cs`. To release a new version, change that one line and rebuild.
 
 The release exe isn't code-signed, so Windows SmartScreen or antivirus software may warn about it. If you'd rather not trust a downloaded binary, read `LcdLabelHelper.cs` and build it yourself.
 

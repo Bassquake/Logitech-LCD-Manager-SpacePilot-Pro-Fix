@@ -6,7 +6,7 @@
 // file and, whenever the service rewrites it, resolves each button's assigned action from
 // the active profile (as reported in 3DxServiceState.xml) and inserts the label.
 //
-// Usage (the exe is named LcdLabelHelper-<version>.exe):
+// Usage:
 //   LcdLabelHelper.exe          run in the background (single instance)
 //   LcdLabelHelper.exe --once   patch LCDCfg.xml once and print the resolved labels
 //   LcdLabelHelper.exe --exit   stop a running background instance
@@ -31,7 +31,7 @@ using System.Xml;
 
 static class LcdLabelHelper
 {
-    // Release version (major.minor). build.cmd reads this line to name the exe.
+    // Release version (major.minor), shown in the exe's Properties and in --once output.
     public const string Version = "1.0";
 
     const string MutexName = @"Local\LcdLabelHelper_3Dx";
