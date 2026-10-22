@@ -2,6 +2,14 @@
 
 Brings back the button labels on the **3Dconnexion SpacePilot Pro** LCD ("Function Keys" screen) under 3DxWare 10.8 and later using a very tiny exe! May work for other 3DConnexion devices.
 
+## Quick install
+
+- Unplug your device.
+- Download the zip from Releases and extract the exe.
+- Place it to where the Logitech applets are: **C:\Program Files\Logitech\GamePanel Software\LCD Manager\Applets**. This will autostart the exe whenever device is turned on.
+- Turn on device.
+- Et voila text should now appear in the function keys!
+
 ![Yay!](https://github.com/Bassquake/Logitech-LCD-Manager-SpacePilot-Pro-Fix/blob/master/assets/spacepilot-pro-text-yes.jpg)
 
 ## The problem
